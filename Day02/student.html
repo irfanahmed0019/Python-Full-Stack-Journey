@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Student Registration Form</title>
+         <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <main>
+            <form>
+                <section id="Basic-Details">
+                    <h1>Student Registration Form</h1>
+                    <h2>Student Information</h2>
+                    <label for="fullname">Full Name</label>
+                    <input type="text" id="fullname" name="fullname"><br>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email"><br>
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone"><br>
+                    <label for="age">Age</label>
+                    <input type="number" id="age" name="age"><br>
+                </section>
+                <section id="Gender">
+                    <h2>Gender </h2>
+                    <input type="radio" id="male" name="gender" value="male">
+                    <label for="male">Male</label><br>
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female">Female</label><br>
+                    <input type="radio" id="other" name="gender" value="other">
+                    <label for="other">Other</label>
+                </section>
+                <section id="Course">
+                    <h2>Choose Your Course</h2>
+                    <label for="course">
+                        Course
+                    </label>
+                    <select id="course" name="course">
+                    <option value="computer_engineering">
+                        Computer Engineering
+                    </option>
+                    <option value="mechanical_engineering">
+                        Mechanical Engineering
+                    </option>
+                    <option value="electronics_engineering">
+                        Electronics Engineering
+                    </option>
+                    <option value="civil_engineering">
+                        Civil Engineering
+                    </option>
+                    </select>
+                </section>
+                <section id="skills">
+                    <h2>Skills</h2>
+                    <input type="checkbox" id="python" name="skills" value="python">
+                    <label for="python">Python</label><br>
+                    <input type="checkbox" id="html" name="skills" value="html">
+                    <label for="html">HTML</label><br>
+                    <input type="checkbox" id="css" name="skills" value="css">
+                    <label for="css">CSS</label><br>
+                    <input type="checkbox" id="javascript" name="skills" value="javascript">
+                    <label for="javascript">JavaScript</label><br>
+                </section>
+                <section id="address">
+                    <h2>Address</h2>
+                    <textarea name="address" rows="4" cols="30"></textarea>
+                </section>
+                <section id="password">
+                    <h2>Credentials</h2>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password"><br>
+                    <label for="confirm_password">Confirm Password</label>
+                    <input type="password" id="confirm_password" name="confirm_password"><br>
+                </section>
+                <br><br>
+                <section id="terms">
+                    <input type="checkbox" id="tc" name="tc">
+                    <label for="tc">I agree to Terms & Conditions</label><br><br>
+                    <button type="submit">Register</button>
+                    </section>
+            </form>
+        </main>
+    </body>
+</html>
