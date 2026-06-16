@@ -1,412 +1,24 @@
-# Day 03 - CSS Grid Fundamentals
+# Day 03 - CSS Flexbox and Grid Fundamentals
 
 ## Overview
 
-Today I started learning CSS Grid, one of the most powerful layout systems in modern web development.
+Today I started learning CSS layout systems.
 
-I learned how websites arrange content into rows and columns and how browsers calculate space using Grid.
+I learned that HTML provides the structure of a webpage, while CSS controls how that structure looks and is arranged on the screen.
 
-Instead of memorizing CSS properties, I focused on understanding how Grid thinks and how layouts are mathematically calculated.
+The main focus of today was understanding:
 
----
-
-# Why CSS Grid Exists
-
-By default, HTML elements are displayed one below another.
-
-Example:
-
-```html
-<div>Box 1</div>
-<div>Box 2</div>
-<div>Box 3</div>
-<div>Box 4</div>
-```
-
-Browser Output:
-
-```text
-Box 1
-Box 2
-Box 3
-Box 4
-```
-
-This works for documents but not for modern websites.
-
-Most websites require layouts like:
-
-```text
-Box 1      Box 2
-
-Box 3      Box 4
-```
-
-This is where CSS Grid becomes useful.
+- Flexbox
+- CSS Grid
+- Layout Thinking
+- Browser Calculations
+- Real-World Website Layouts
 
 ---
 
-# What is CSS Grid?
+# HTML vs CSS
 
-CSS Grid is a two-dimensional layout system.
-
-It allows developers to arrange elements into:
-
-```text
-Rows
-+
-Columns
-```
-
-Think of it like an Excel spreadsheet.
-
-Example:
-
-```text
-+---------+---------+
-|   A1    |   B1    |
-+---------+---------+
-|   A2    |   B2    |
-+---------+---------+
-```
-
-Grid works in a very similar way.
-
----
-
-# Creating a Grid Container
-
-Example:
-
-```css
-.container{
-    display:grid;
-}
-```
-
-Meaning:
-
-```text
-Browser,
-arrange all child elements using Grid.
-```
-
-Important:
-
-```css
-display:grid;
-```
-
-turns a normal container into a Grid Container.
-
----
-
-# Understanding Columns
-
-Example:
-
-```css
-.container{
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-}
-```
-
-Result:
-
-```text
-1      2
-
-3      4
-```
-
-Two equal columns are created.
-
----
-
-# Understanding fr
-
-One of the most important concepts learned today.
-
-```css
-1fr
-```
-
-means:
-
-```text
-1 Fraction
-of available space
-```
-
-Example:
-
-```css
-grid-template-columns: 1fr 1fr;
-```
-
-Result:
-
-```text
-50%
-50%
-```
-
----
-
-Example:
-
-```css
-grid-template-columns: 1fr 2fr;
-```
-
-Result:
-
-```text
-33%
-66%
-```
-
-Reason:
-
-```text
-1 + 2 = 3 Parts
-```
-
-Column Distribution:
-
-```text
-1/3
-
-2/3
-```
-
----
-
-# Understanding Fraction Calculations
-
-Example:
-
-```css
-grid-template-columns: 1fr 2fr 1fr;
-```
-
-Browser Calculation:
-
-Step 1:
-
-```text
-1 + 2 + 1 = 4 Parts
-```
-
-Step 2:
-
-```text
-Column 1 = 1/4
-
-Column 2 = 2/4
-
-Column 3 = 1/4
-```
-
-Final Layout:
-
-```text
-25% | 50% | 25%
-```
-
-Visual:
-
-```text
-|----|--------|----|
- 1fr    2fr     1fr
-```
-
----
-
-# Mixing Fixed Width and Fractions
-
-Example:
-
-```css
-grid-template-columns: 200px 1fr 3fr;
-```
-
-Container Width:
-
-```text
-1000px
-```
-
-Browser Calculation:
-
-Step 1:
-
-Reserve fixed width.
-
-```text
-1000 - 200 = 800px
-```
-
-Remaining Space:
-
-```text
-800px
-```
-
-Step 2:
-
-Count fractions.
-
-```text
-1fr + 3fr = 4fr
-```
-
-Step 3:
-
-Calculate one fraction.
-
-```text
-800 ÷ 4 = 200px
-```
-
-Step 4:
-
-Assign widths.
-
-```text
-Column 1 = 200px
-
-Column 2 = 200px
-
-Column 3 = 600px
-```
-
-Final Layout:
-
-```text
-|----|----|------------|
- 200   200      600
-```
-
----
-
-# Grid Rows
-
-Rows control height.
-
-Example:
-
-```css
-grid-template-rows: 100px 200px;
-```
-
-Meaning:
-
-```text
-Row 1 = 100px
-
-Row 2 = 200px
-```
-
-Visual:
-
-```text
--------------
- Row 1
--------------
-
----------------------
- Row 2
----------------------
-```
-
----
-
-# Gap Property
-
-Without gap:
-
-```text
-1 2
-3 4
-```
-
-Everything feels crowded.
-
-Example:
-
-```css
-gap:20px;
-```
-
-Result:
-
-```text
-1      2
-
-3      4
-```
-
-Gap creates spacing between Grid items.
-
----
-
-# Grid vs Flexbox
-
-One of the most important concepts learned today.
-
-## Flexbox
-
-Best for:
-
-```text
-One Direction
-```
-
-Examples:
-
-- Navigation Bars
-- Menus
-- Buttons
-- Toolbars
-
-Example:
-
-```text
-Home About Contact
-```
-
----
-
-## Grid
-
-Best for:
-
-```text
-Rows
-+
-Columns
-```
-
-Examples:
-
-- Dashboards
-- Portfolios
-- Product Cards
-- Gallery Layouts
-
-Example:
-
-```text
-Project 1     Project 2
-
-Project 3     Project 4
-```
-
----
-
-# Mental Model
+A realization I had today:
 
 HTML asks:
 
@@ -443,20 +55,524 @@ display:grid;
 Meaning:
 
 ```text
-Arrange these elements
-into rows and columns.
+Arrange items into rows and columns.
+```
+
+---
+
+# Why Layout Systems Exist
+
+Without CSS layout systems:
+
+```html
+<div>Box 1</div>
+<div>Box 2</div>
+<div>Box 3</div>
+<div>Box 4</div>
+```
+
+Browser Output:
+
+```text
+Box 1
+Box 2
+Box 3
+Box 4
+```
+
+Everything appears one below another.
+
+Modern websites require layouts like:
+
+```text
+Box 1      Box 2
+
+Box 3      Box 4
+```
+
+This is why Flexbox and Grid exist.
+
+---
+
+# Flexbox
+
+Flexbox is a one-dimensional layout system.
+
+Mental Model:
+
+```text
+One Direction
+```
+
+Flexbox works in:
+
+```text
+Row
+OR
+Column
+```
+
+---
+
+# Creating a Flex Container
+
+Example:
+
+```css
+.container{
+    display:flex;
+}
+```
+
+Meaning:
+
+```text
+Arrange child elements in a flexible layout.
+```
+
+---
+
+# Flex Direction
+
+Example:
+
+```css
+flex-direction: row;
+```
+
+Result:
+
+```text
+Home  About  Contact
+```
+
+Items are placed horizontally.
+
+---
+
+Example:
+
+```css
+flex-direction: column;
+```
+
+Result:
+
+```text
+Home
+About
+Contact
+```
+
+Items are placed vertically.
+
+---
+
+# Justify Content
+
+Controls alignment on the main axis.
+
+Example:
+
+```css
+justify-content: center;
+```
+
+Result:
+
+```text
+      Home About Contact
+```
+
+Centered horizontally.
+
+---
+
+Common Values:
+
+```text
+flex-start
+center
+flex-end
+space-between
+space-around
+```
+
+---
+
+# Align Items
+
+Controls alignment on the cross axis.
+
+Example:
+
+```css
+align-items:center;
+```
+
+Meaning:
+
+```text
+Center items vertically.
+```
+
+---
+
+# Where Flexbox is Used
+
+Examples:
+
+- Navigation Bars
+- Menus
+- Buttons
+- Toolbars
+- Header Sections
+
+Example:
+
+```text
+Logo      Home About Contact      Login
+```
+
+Flexbox is perfect for this.
+
+---
+
+# CSS Grid
+
+Grid is a two-dimensional layout system.
+
+Mental Model:
+
+```text
+Rows
++
+Columns
+```
+
+Think of Excel.
+
+Example:
+
+```text
++---------+---------+
+|   A1    |   B1    |
++---------+---------+
+|   A2    |   B2    |
++---------+---------+
+```
+
+Grid works similarly.
+
+---
+
+# Creating a Grid Container
+
+Example:
+
+```css
+.container{
+    display:grid;
+}
+```
+
+Meaning:
+
+```text
+Arrange child elements using rows and columns.
+```
+
+---
+
+# Grid Columns
+
+Example:
+
+```css
+grid-template-columns: 1fr 1fr;
+```
+
+Result:
+
+```text
+1      2
+
+3      4
+```
+
+Two equal columns.
+
+---
+
+# Understanding fr
+
+One of the biggest concepts learned today.
+
+```css
+1fr
+```
+
+means:
+
+```text
+1 Fraction
+of available space
+```
+
+---
+
+Example:
+
+```css
+grid-template-columns: 1fr 1fr;
+```
+
+Result:
+
+```text
+50%
+50%
+```
+
+---
+
+Example:
+
+```css
+grid-template-columns: 1fr 2fr;
+```
+
+Result:
+
+```text
+33%
+66%
+```
+
+Reason:
+
+```text
+1 + 2 = 3 Parts
+```
+
+---
+
+# Grid Calculations
+
+Example:
+
+```css
+grid-template-columns: 1fr 2fr 1fr;
+```
+
+Browser Calculation:
+
+```text
+1 + 2 + 1 = 4 Parts
+```
+
+Result:
+
+```text
+25% | 50% | 25%
+```
+
+Visual:
+
+```text
+|----|--------|----|
+ 1fr    2fr     1fr
+```
+
+---
+
+# Fixed Width + Fractions
+
+Example:
+
+```css
+grid-template-columns: 200px 1fr 3fr;
+```
+
+Container Width:
+
+```text
+1000px
+```
+
+Step 1:
+
+Reserve fixed width.
+
+```text
+1000 - 200 = 800px
+```
+
+Remaining Space:
+
+```text
+800px
+```
+
+Step 2:
+
+Count fractions.
+
+```text
+1fr + 3fr = 4fr
+```
+
+Step 3:
+
+Calculate one fraction.
+
+```text
+800 ÷ 4 = 200px
+```
+
+Final Result:
+
+```text
+200px | 200px | 600px
+```
+
+---
+
+# Grid Rows
+
+Rows control height.
+
+Example:
+
+```css
+grid-template-rows: 100px 200px;
+```
+
+Result:
+
+```text
+Row 1 = 100px
+
+Row 2 = 200px
+```
+
+---
+
+# Gap Property
+
+Without gap:
+
+```text
+1 2
+3 4
+```
+
+With:
+
+```css
+gap:20px;
+```
+
+Result:
+
+```text
+1      2
+
+3      4
+```
+
+Cleaner spacing.
+
+---
+
+# Flexbox vs Grid
+
+This was today's biggest realization.
+
+## Flexbox
+
+Mental Model:
+
+```text
+One Direction
+```
+
+Best For:
+
+- Navigation Bars
+- Menus
+- Headers
+- Buttons
+
+Example:
+
+```text
+Home About Contact
+```
+
+---
+
+## Grid
+
+Mental Model:
+
+```text
+Rows
++
+Columns
+```
+
+Best For:
+
+- Dashboards
+- Portfolios
+- Product Cards
+- Galleries
+
+Example:
+
+```text
+Project 1      Project 2
+
+Project 3      Project 4
 ```
 
 ---
 
 # Mistakes and Corrections
 
-## Mistake 1 - Misunderstanding fr Units
+## Mistake 1 - Thinking Grid and Flexbox Are The Same
+
+Initially I thought both tools were used for the same purpose.
+
+### Correct Understanding
+
+Flexbox:
+
+```text
+One Dimension
+```
+
+Grid:
+
+```text
+Two Dimensions
+```
+
+### Lesson Learned
+
+Use Flexbox for alignment.
+
+Use Grid for layouts.
+
+---
+
+## Mistake 2 - Misunderstanding fr Units
 
 Initially I thought:
 
 ```css
-grid-template-columns: 200px 1fr 3fr;
+200px 1fr 3fr
 ```
 
 simply meant:
@@ -467,11 +583,9 @@ Medium
 Large
 ```
 
-without understanding the actual calculation.
-
 ### Correct Understanding
 
-The browser performs mathematical calculations.
+The browser performs calculations.
 
 Example:
 
@@ -491,63 +605,33 @@ Fractions = 4fr
 
 ### Lesson Learned
 
-fr represents fractions of remaining space, not fixed sizes.
+fr represents fractions of remaining space.
 
 ---
 
-## Mistake 2 - Thinking Grid is Only Visual
+## Mistake 3 - Focusing Only On Appearance
 
-At first I focused only on how layouts looked.
-
-Example:
+Initially I focused on:
 
 ```text
-Project 1     Project 2
-
-Project 3     Project 4
+How it looks
 ```
 
 ### Correct Understanding
 
-Grid is based on rules and calculations.
+CSS Grid follows mathematical calculations.
 
-The browser calculates layouts using:
+The browser calculates:
 
-- Columns
-- Rows
+- Width
+- Height
 - Fractions
-- Fixed Widths
-- Gaps
+- Rows
+- Columns
 
 ### Lesson Learned
 
-Grid is a mathematical layout system.
-
----
-
-## Mistake 3 - Confusing Grid and Flexbox
-
-Initially I saw both as layout tools.
-
-### Correct Understanding
-
-Flexbox:
-
-```text
-One Direction
-```
-
-Grid:
-
-```text
-Two Dimensions
-```
-
-### Lesson Learned
-
-Use Flexbox for navigation and alignment.
-
-Use Grid for complete page layouts and card systems.
+Grid is a structured layout system, not visual guessing.
 
 ---
 
@@ -555,9 +639,10 @@ Use Grid for complete page layouts and card systems.
 
 1. What does fr actually mean?
 2. How does the browser calculate Grid widths?
-3. Why is Grid considered two-dimensional?
-4. When should Grid be used instead of Flexbox?
-5. How do fixed widths and fractions work together?
+3. Why is Grid called a two-dimensional layout system?
+4. When should I use Flexbox?
+5. When should I use Grid?
+6. How do fixed widths and fractions work together?
 
 ---
 
@@ -565,9 +650,19 @@ Use Grid for complete page layouts and card systems.
 
 Today I learned:
 
-✅ CSS Grid
+✅ CSS Layout Systems
 
-✅ Grid Containers
+✅ Flexbox
+
+✅ display:flex
+
+✅ flex-direction
+
+✅ justify-content
+
+✅ align-items
+
+✅ CSS Grid
 
 ✅ display:grid
 
@@ -577,11 +672,11 @@ Today I learned:
 
 ✅ fr Units
 
-✅ Fixed Width + Fraction Layouts
-
 ✅ Gap Property
 
 ✅ Grid Calculations
+
+✅ Fixed Width + Fraction Layouts
 
 ✅ Grid vs Flexbox
 
@@ -589,10 +684,28 @@ Today I learned:
 
 # Day 03 Summary
 
-Today I learned how modern websites organize content using CSS Grid.
+Today I learned how modern websites arrange content using CSS.
 
-The biggest lesson was understanding that Grid is not just about arranging boxes visually.
+The biggest realization was:
 
-Grid is a mathematical layout system where the browser calculates rows, columns, fractions, and spacing to create structured layouts.
+```text
+HTML
+↓
+Structure
 
-I also learned the difference between Grid and Flexbox and how professional websites use these tools together to build modern user interfaces.
+CSS
+↓
+Appearance
+
+Flexbox
+↓
+One Direction
+
+Grid
+↓
+Rows + Columns
+```
+
+I also learned how browsers calculate space using fractions and how professional layouts are built using Flexbox and Grid together.
+
+This was my first step into understanding real-world website layouts.
